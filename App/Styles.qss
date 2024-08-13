@@ -1,0 +1,8 @@
+#HomePage {
+    background: qradialgradient(
+        cx: 0.7, cy: 0.3, radius: 1,
+        fx: 0.7, fy: 0.3,
+        stop: 0 rgba(0, 60, 255, 25),
+        stop: 1 rgba(0, 60, 255, 0)
+    );
+}
