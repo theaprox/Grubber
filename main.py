@@ -2,39 +2,33 @@ import sys
 from PySide6.QtWidgets import *
 from PySide6.QtCore import *
 from PySide6.QtGui import *
-from pages import *
-
-class AppGUI(QWidget):
-    def __init__(self):
-        super().__init__()
-        self.startUI()
-
-    def startUI(self):
-        self.setWindowTitle("Hewow")
-        self.body = QVBoxLayout()
-        self.body.setContentsMargins(0, 0, 0, 0)
-        self.setLayout(self.body)
-
-        # Load the default page
-        self.loadPage(LandingPage(self)) 
-
-    def cleanPage(self):
-        '''Clear the current layout'''
-        for i in reversed(range(self.body.count())):
-            widget = self.body.itemAt(i).widget()
-            if widget is not None:
-                widget.setParent(None)
-
-    def loadPage(self, page_widget):
-        '''Load the provided page widget'''
-        self.cleanPage()  # Clear existing page
-        self.body.addWidget(page_widget)  # Add the new page
+from App.Pages.HomePage import HomePage
+from App.Classes.Utility import LoadCustomFonts, ConfigManager
+from App.Classes.Router import Router
 
 def main():
     app = QApplication(sys.argv)
 
-    viewport = AppGUI()
-    viewport.setContentsMargins(0, 0, 0, 0)
+    with open("./App/Styles.qss", "r") as f:
+        _style = f.read()
+        app.setStyleSheet(_style)
+
+    config = ConfigManager()
+    customFonts = LoadCustomFonts()
+    customFonts.load_fonts()
+
+    viewport = QWidget()
+    viewport.setObjectName("viewport")
+    viewport.setFont(QFont(config.font, 16, QFont.Normal))
+    viewport.setWindowIcon(QIcon('./assets/public/grubber-color.png'))
+    viewport.setWindowTitle('Grubber')
+
+    body = QVBoxLayout(viewport)
+    body.setContentsMargins(0, 0, 0, 0)
+    body.setSpacing(0)
+    router = Router(body)
+    router.load_initial(HomePage(viewport))
+
     viewport.show()
 
     sys.exit(app.exec())

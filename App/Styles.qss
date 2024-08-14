@@ -1,0 +1,71 @@
+#viewport {
+    min-width: 800px;
+    max-width: 800px;
+}
+
+#HomePage {
+    background: qradialgradient(
+        cx: 0.7, cy: 0.3, radius: 1,
+        fx: 0.7, fy: 0.3,
+        stop: 0 rgba(0, 60, 255, 25),
+        stop: 1 rgba(0, 60, 255, 0)
+    );
+}
+
+#title {
+    font: 64px 'Passero One';
+    color: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0,stop: 0 #FFA400, stop: 1 #DB00FF); padding: 48px 0;
+}
+
+#video_url {
+    font-size: 16px;
+    padding: 12px 24px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(128,128,128,64);
+}
+
+#video_url:hover {
+    border-color: rgba(128,128,128,128);
+}
+
+#video_url:focus {
+    border-color: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0,stop: 0 #FFA400, stop: 1 #DB00FF);
+}
+
+#trim_btn {
+    font-size: 16px;
+    padding: 12px 0;
+    background: qlineargradient(
+        x1: -1, y1: 1,
+        x2: 2, y2: 1,
+        stop: 0 rgba(128,128,128,128),
+        stop: 0.4 rgba(128,128,128,255),
+        stop: 1 rgba(128,128,128,128)
+    );
+    border: none;
+    border-radius: 4px;
+}
+
+#trim_btn:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0,stop: 0 #FFA400, stop: 1 #DB00FF);
+}
+
+#down_btn {
+    font-size: 16px;
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+#down_btn:hover {
+    text-decoration: underline;  
+}
+
+#HyperlinkLabel {
+    text-decoration: none;  
+}
+
+#HyperlinkLabel:hover {
+    text-decoration: underline;  
+}
