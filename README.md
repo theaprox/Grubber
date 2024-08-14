@@ -8,8 +8,8 @@
 The project is built in python and utilizes PySide6 for GUI and yt-dlp for functionality.
 
 #### Featuees:
-- [x] Responsive and modern GUI basics
-- [x] Routing/pagination functionality
+- [x] ~~Responsive and modern GUI basics~~
+- [x] ~~Routing/pagination functionality~~
 - [ ] Basic download function
 - [ ] Selectable download location /w saved download directory
 - [ ] Settings for preffered video and audio quality
