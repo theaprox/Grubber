@@ -1,8 +1,13 @@
-![alt text](https://i.ibb.co/nf8qXRz/Grubber.png)
+<p align="center">
+    <img
+        alt="Grubber app title image"
+        src="https://i.ibb.co/nf8qXRz/Grubber.png"
+    />
+</p>
 
 ---
 
-### About Project
+## About Project
 **Grubber** is an open-srource project designed to trim and download youtube videos to local storage.
 
 The project is built in python and utilizes PySide6 for GUI and yt-dlp for functionality.
@@ -17,6 +22,17 @@ The project is built in python and utilizes PySide6 for GUI and yt-dlp for funct
 - [ ] Selectable video file quality for download
 - [ ] Option: download audio only
 - [ ] Option: download video only
+
+### Preview
+
+<p align="left">
+    <img
+        alt="Preview of Grubber app start window"
+        src="https://i.ibb.co/KF58N2V/homepage.png"
+    />
+</p>
+
+---
 
 ## Setup Guide
 
