@@ -1,18 +1,23 @@
-# GRUBBER
-### Take Youtube With YOU
-Grubber makes it easy to trim and download
-high-quality YouTube videos.
+![alt text](https://i.ibb.co/nf8qXRz/Grubber.png)
 
 ---
 
-### Project Details
-The project is built with Pysite6 and Qt frameworks.
-Originally made for Windows, but works cross-platform (Win, Mac, Linux).
-Core functionality uses YT-DLP.
+### About Project
+**Grubber** is an open-srource project designed to trim and download youtube videos to local storage.
 
-{...TBD...}
+The project is built in python and utilizes PySide6 for GUI and yt-dlp for functionality.
 
-## Simple & functional yt-dlp based python tool
+#### Featuees:
+[x] Responsive and modern GUI basics
+[x] Routing/pagination functionality
+[ ] Basic download function
+[ ] Selectable download location /w saved download directory
+[ ] Settings for preffered video and audio quality
+[ ] Customizable downlaod file (trim, cut)
+[ ] Selectable video file quality for download
+[ ] Option: download audio only
+[ ] Option: download video only
 
-Make sure you have `FFMPEG` installed on your system before using.
+## Setup Guide
+
 {...TBD...}

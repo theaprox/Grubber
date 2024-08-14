@@ -9,11 +9,11 @@ class HomePage(QWidget):
     def __init__(self, parent):
         super().__init__(parent)
         self.setObjectName("HomePage")
-        
-        config = ConfigManager()
-
         LEFT_W = 120
         RIGHT_W = 120
+        
+        config = ConfigManager()
+        
         container = QHBoxLayout()
         container.setAlignment(Qt.AlignTop | Qt.AlignCenter)
         container.setContentsMargins(0, 0, 0, 0)
