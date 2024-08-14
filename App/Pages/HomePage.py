@@ -1,7 +1,7 @@
 from PySide6.QtWidgets import *
 from PySide6.QtCore import *
 from PySide6.QtGui import *
-from App.Classes.Components import HyperlinkLabel
+from App.Classes.Components import FooterWidget
 from App.Classes.Utility import ConfigManager
 
 class HomePage(QWidget):
@@ -96,28 +96,13 @@ class HomePage(QWidget):
         
         spacer = QSpacerItem(0, 0, QSizePolicy.Expanding, QSizePolicy.Expanding)
         
-        footer = QHBoxLayout()
-        footer.setSpacing(4)
-        footer.setContentsMargins(0, 32, 0, 32)
-        footer.setAlignment(Qt.AlignmentFlag.AlignBottom | Qt.AlignmentFlag.AlignHCenter)
-
-        FOOTER = 'This is an open-source project. Code base can be found on GitHub:'
-        footer_msg = QLabel(FOOTER, self)
-        footer_msg.setStyleSheet("font-size: 12px; color: #6f6f6f; padding: 0;")
-        
-        source_link = HyperlinkLabel(self)
-        source_link.setStyleSheet("font-size: 12px; padding: 0; text-decoration: none;")
-        linkTemplate = '<a style="text-decoration:none" href="{0}">{1}</a>'
-        source_link.setText(linkTemplate.format('https://github.com/theaproxy/grubber', 'grubber'))
-        
-        footer.addWidget(footer_msg)
-        footer.addWidget(source_link)
+        footer = FooterWidget(self)
         
         center_layout.addWidget(title)
         center_layout.addLayout(hero)
         center_layout.addLayout(actions)
         center_layout.addItem(spacer)
-        center_layout.addLayout(footer)
+        center_layout.addWidget(footer)
 
         right_widget = QWidget()
         right_widget.setFixedWidth(RIGHT_W)
