@@ -18,7 +18,7 @@ def main():
     customFonts.load_fonts()
 
     viewport = QWidget()
-    viewport.setFixedSize(800, 640)
+    viewport.setObjectName("viewport")
     viewport.setFont(QFont(config.font, 16, QFont.Normal))
     viewport.setWindowIcon(QIcon('./assets/public/grubber-color.png'))
     viewport.setWindowTitle('Grubber')

@@ -2,12 +2,15 @@ from PySide6.QtWidgets import *
 from PySide6.QtCore import *
 from PySide6.QtGui import *
 from App.Classes.Components import HyperlinkLabel
+from App.Classes.Utility import ConfigManager
 
 class HomePage(QWidget):
     '''Displays the starting view of the application'''
     def __init__(self, parent):
         super().__init__(parent)
         self.setObjectName("HomePage")
+        
+        config = ConfigManager()
 
         LEFT_W = 120
         RIGHT_W = 120
@@ -45,20 +48,20 @@ class HomePage(QWidget):
         headline = QLabel(HEADLINE, self)
         headline.setAlignment(Qt.AlignmentFlag.AlignHCenter)
         headline.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
-        headline.setStyleSheet("font: 32px 'Ubuntu Medium';")
+        headline.setStyleSheet('font-size: 32px;')
         
         PARAGRAPH = 'Grubber makes it easy to download high-quality YouTube videos up to 4K.\nYou can also easily trim the video to download only the parts you want!'
         paragraph = QLabel(PARAGRAPH, self)
         paragraph.setWordWrap(True)
         paragraph.setAlignment(Qt.AlignmentFlag.AlignHCenter)
         paragraph.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
-        paragraph.setStyleSheet("font: 16px 'Ubuntu'; color: #9F9F9F;")
+        paragraph.setStyleSheet('font-size: 16px; color: #9F9F9F;')
         
         hero.addWidget(headline)
         hero.addWidget(paragraph)
         
         actions = QVBoxLayout()
-        actions.setSpacing(24)
+        actions.setSpacing(16)
         actions.setContentsMargins(0, 32, 0, 32)
         input = QLineEdit(self)
         input.setObjectName("video_url")
@@ -76,12 +79,14 @@ class HomePage(QWidget):
         TRIM = 'Download && Trim'
         trim_btn = QPushButton(TRIM, self)
         trim_btn.setObjectName("trim_btn")
+        trim_btn.setFont(QFont(config.font, 16, QFont.Medium))
         trim_btn.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
         trim_btn.setCursor(Qt.PointingHandCursor)
         
         DOWNLOAD = 'Full Video Download'
         down_btn = QPushButton(DOWNLOAD, self)
         down_btn.setObjectName("down_btn")
+        down_btn.setFont(QFont(config.font, 16, QFont.Medium))
         down_btn.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         down_btn.setCursor(Qt.PointingHandCursor)
         
@@ -98,10 +103,10 @@ class HomePage(QWidget):
 
         FOOTER = 'This is an open-source project. Code base can be found on GitHub:'
         footer_msg = QLabel(FOOTER, self)
-        footer_msg.setStyleSheet("font: 12px 'Ubuntu'; color: #6f6f6f; padding: 0;")
+        footer_msg.setStyleSheet("font-size: 12px; color: #6f6f6f; padding: 0;")
         
         source_link = HyperlinkLabel(self)
-        source_link.setStyleSheet("font: 12px 'Ubuntu'; padding: 0; text-decoration: none;")
+        source_link.setStyleSheet("font-size: 12px; padding: 0; text-decoration: none;")
         linkTemplate = '<a style="text-decoration:none" href="{0}">{1}</a>'
         source_link.setText(linkTemplate.format('https://github.com/theaproxy/grubber', 'grubber'))
         

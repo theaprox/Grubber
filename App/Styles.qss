@@ -1,3 +1,7 @@
+#viewport {
+    min-width: 800px;
+    max-width: 800px;
+}
 
 #HomePage {
     background: qradialgradient(
@@ -30,7 +34,7 @@
 }
 
 #trim_btn {
-    font: 16px 'Ubuntu Medium';
+    font-size: 16px;
     padding: 12px 0;
     background: qlineargradient(
         x1: -1, y1: 1,
@@ -48,7 +52,6 @@
 }
 
 #down_btn {
-    font: 16px 'Ubuntu';
     font-size: 16px;
     background: transparent;
     border: none;
