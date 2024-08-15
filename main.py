@@ -3,6 +3,7 @@ from PySide6.QtWidgets import *
 from PySide6.QtCore import *
 from PySide6.QtGui import *
 from App.Pages.Base import Base
+
 from App.Classes.Utility import LoadCustomFonts, ConfigManager, Router
 
 def main():

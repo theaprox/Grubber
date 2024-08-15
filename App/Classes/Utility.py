@@ -76,7 +76,7 @@ class ConfigManager:
         except Exception as e:
             print(f"Error finding default download folder: {e}")
             return None
-        
+ 
 class Router:
     def __init__(self, layout):
         self.layout = layout
@@ -115,3 +115,4 @@ class Router:
         """Reset navigation history."""
         self.current_page = None
         self.previous_page = None
+
