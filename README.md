@@ -15,12 +15,12 @@ Project's GUI is made with: <a href='https://pypi.org/project/PySide6/' target='
 
 #### Featuees:
 **Basic:**
-- [x] ~~Responsive and modern GUI basics~~
-- [x] ~~Routing/pagination functionality~~
-- [ ] Validate and normalized user input url or video code
-- [ ] Download video to pup-up specified location
-- [ ] Save default download location
-- [ ] Download all videos from playlist
+- [x] Basic GUI (modern, clean, responsive)
+- [x] Routing/pagination functionality (window layering)
+- [ ] Validate and normalized user input (url/code) for processing
+- [ ] Download video to specified location (through pop-up)
+- [ ] User-defined default download location (optional "ask when downloading")
+- [ ] Download full playlist
 
 **Advanced:**
 - [ ] Select to download video or audio only
