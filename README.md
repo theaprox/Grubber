@@ -1,6 +1,6 @@
 <p align="center">
     <img
-        height=128
+        height=64
         alt="Grubber app title image"
         src="https://i.ibb.co/nf8qXRz/Grubber.png"
     />
