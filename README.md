@@ -21,11 +21,13 @@ The project is built in python and utilizes PySide6 for GUI and yt-dlp for funct
 - [ ] Download video to pup-up specified location
 - [ ] Save default download location
 - [ ] Download all videos from playlist
+
 **Advanced:**
 - [ ] Select to download video or audio only
 - [ ] Select download video and audio from a list of all available options (quality, format)
 - [ ] Customizable video segment download (trim to in-out time)
 - [ ] Option: download audio only
+
 **Extra Features:**
 - [ ] Display list of selectible videos in playlist with filters (upload date, views, word search in description or title)
 
