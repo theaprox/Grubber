@@ -12,9 +12,11 @@
 <!-- MANPAGE: BEGIN EXCLUDED SECTION -->
 <div align="center">
 
-[![yt-dlp](https://img.shields.io/badge/pypi-blue?style=for-the-badge&logo=pypi&labelColor=grey)](https://pypi.org/project/yt-dlp "yt-dlp")
+[![pyside6](https://img.shields.io/badge/pypi-blue?style=for-the-badge&logo=pypi&labelColor=grey)](https://pypi.org/project/PySide6/ "PySide6")
+[![yt-dlp](https://img.shields.io/badge/ytdlp-blue?style=for-the-badge&logo=pypi&labelColor=grey)](https://pypi.org/project/yt-dlp "yt-dlp")
 [![License](https://img.shields.io/github/license/theaprox/Grubber?style=for-the-badge)](LICENSE "GPL-3.0 License")
-[![Commits](https://img.shields.io/github/commit-activity/m/theaprox/Grubber/dev?style=for-the-badge&label=commits)](https://github.com/theaprox/Grubber/commits "Commit History")
+[![Commits](https://img.shields.io/github/commit-activity/m/theaprox/Grubber/dev?style=for-the-badge&label=commits&color=green)
+](https://github.com/theaprox/Grubber/commits "Commit History")
 
 </div>
 <!-- MANPAGE: END EXCLUDED SECTION -->
