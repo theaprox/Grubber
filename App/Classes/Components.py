@@ -11,6 +11,59 @@ class HyperlinkLabel(QLabel):
         self.setParent(parent)
         self.setOpenExternalLinks(True)
         self.setContentsMargins(0, 0, 0, 0)
+        
+class LayoutComponents:
+    def __init__(self):
+        pass
+    
+    def WidgetContainer(self, parent=None, direction=Qt.Horizontal):
+        """Creates a container that can hold the side and center widgets.
+        
+        Args:
+            parent (QWidget): The parent widget for this container.
+            direction (Qt.AlignmentFlag): Direction of the layout (Qt.Horizontal or Qt.Vertical).
+            
+        Returns:
+            QLayout: The container layout (either QHBoxLayout or QVBoxLayout).
+        """
+        if direction == Qt.Horizontal:
+            container = QHBoxLayout(parent)
+        else:
+            container = QVBoxLayout(parent)
+        
+        container.setAlignment(Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignCenter)
+        container.setContentsMargins(0, 0, 0, 0)
+        container.setSpacing(0)
+        return container
+    
+    def SideWidget(self, parent=None, width=120):
+        """Creates a reusable side widget (left or right) with a fixed width."""
+        side_widget = QWidget(parent)
+        side_widget.setFixedWidth(width)
+        side_widget.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Expanding)
+
+        side_layout = QVBoxLayout(side_widget)
+        side_layout.setAlignment(Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignHCenter)
+        side_layout.setContentsMargins(0, 32, 0, 32)
+        side_layout.setSpacing(0)
+
+        side_widget.setLayout(side_layout)
+        side_widget.layout = side_layout  # Store the layout reference
+        return side_widget
+
+    def CenterWidget(self, parent=None):
+        """Creates a reusable center widget that expands."""
+        center_widget = QWidget(parent)
+        center_widget.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+
+        center_layout = QVBoxLayout(center_widget)
+        center_layout.setAlignment(Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignHCenter)
+        center_layout.setContentsMargins(0, 0, 0, 0)
+        center_layout.setSpacing(0)
+
+        center_widget.setLayout(center_layout)
+        center_widget.layout = center_layout  # Store the layout reference
+        return center_widget
 
 class FooterWidget(QWidget):
     def __init__(self, parent=None):
@@ -80,3 +133,35 @@ class VideoInput(QWidget):
         actions.addLayout(buttons)
         
         self.setLayout(actions)
+        
+class CustomWidgets:
+    def __init__(self):
+        pass
+
+    def SettingsList(self, parent=None):
+        """Creates a reusable settings list widget (list items container)."""
+        settings_list = QWidget(parent)
+        settings_list_layout = QVBoxLayout(settings_list)
+        settings_list_layout.setSpacing(8)
+        settings_list_layout.setContentsMargins(0, 0, 0, 0)
+        settings_list_layout.setObjectName('settings_list')
+        settings_list.setStyleSheet('font-size: 12px;')
+        
+        settings_list.setLayout(settings_list_layout)
+        settings_list.layout = settings_list_layout  # Store the layout reference
+        return settings_list
+
+    def SettingsListItem(self, parent=None):
+        """Creates a reusable settings list item widget."""
+        settings_list_item = QWidget(parent)
+        settings_list_item.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        settings_list_item.setStyleSheet('border-bottom: 1px solid rgba(128, 128, 128, 64);')
+        
+        settings_list_item_layout = QHBoxLayout(settings_list_item)
+        settings_list_item_layout.setAlignment(Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignVCenter)
+        settings_list_item_layout.setContentsMargins(0, 4, 0, 4)
+        settings_list_item_layout.setSpacing(24)
+        
+        settings_list_item.setLayout(settings_list_item_layout)
+        settings_list_item.layout = settings_list_item_layout  # Store the layout reference
+        return settings_list_item

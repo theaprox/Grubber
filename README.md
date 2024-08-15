@@ -6,33 +6,33 @@
     />
 </p>
 
----
-
 ## About Project
-**Grubber** is an open-srource project designed to trim and download youtube videos to local storage.
+**Grubber** is an open-srource project designed to download highest available quality youtube videos and/or its segments (specific user-defined parts of the video) to local storage.
 
-The project is built in python and utilizes PySide6 for GUI and yt-dlp for functionality.
+Project's GUI is made with: <a href='https://pypi.org/project/PySide6/' target='_blank'>PySide6</a>, and functionality built using <a href='https://github.com/yt-dlp/yt-dlp' target='_blank'>yt-dlp</a>.
 
-#### Featuees:
-**Basic:**
-- [x] ~~Responsive and modern GUI basics~~
-- [x] ~~Routing/pagination functionality~~
-- [ ] Validate and normalized user input url or video code
-- [ ] Download video to pup-up specified location
-- [ ] Save default download location
-- [ ] Download all videos from playlist
+## Featuees:
+**🦴 Basic:**
+- [x] Basic GUI (modern, clean, responsive)
+- [x] Routing/pagination functionality (window layering)
+- [ ] Validate and normalized user input (url/code) for processing
+- [ ] Download video to specified location (through pop-up)
+- [ ] User-defined default download location (optional "ask when downloading")
+- [ ] Download full playlist
 
-**Advanced:**
+**🔬 Advanced:**
 - [ ] Select to download video or audio only
 - [ ] Select download video and audio from a list of all available options (quality, format)
 - [ ] Customizable video segment download (trim to in-out time)
 - [ ] Option: download audio only
 
-**Extra Features:**
+**🚀 Extra Features:**
 - [ ] Display list of selectible videos in playlist with filters (upload date, views, word search in description or title)
 
-### Preview
+## Setup
+{...TBD...}
 
+# Preview
 <p align="left">
     <img 
         width=400
@@ -40,9 +40,3 @@ The project is built in python and utilizes PySide6 for GUI and yt-dlp for funct
         src="https://i.ibb.co/KF58N2V/homepage.png"
     />
 </p>
-
----
-
-## Setup Guide
-
-{...TBD...}

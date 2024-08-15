@@ -3,18 +3,34 @@ import sys
 import platform
 from pathlib import Path
 from configparser import ConfigParser
-from PySide6.QtGui import QFontDatabase
+from PySide6.QtGui import QFontDatabase, QIcon, QPixmap, QPainter, QColor
+from PySide6.QtSvg import QSvgRenderer
 
 # Import Windows registry functions only if on Windows
 if platform.system() == 'Windows':
     from winreg import OpenKey, QueryValueEx, HKEY_CURRENT_USER
 
-class LoadCustomFonts():
+class LoadCustomFonts:
     def load_fonts(self):
         FONTS_DIR = './Assets/fonts/'
         FONTS_LIST = [ 'PasseroOne-Regular.ttf' ]
         for font in FONTS_LIST:
             QFontDatabase.addApplicationFont(f"{FONTS_DIR}/{font}")
+
+class CustomRenderer:
+    def ColorSVGIcon(svg_path, color, size):
+        """Creates a colored icon from an SVG file."""
+        svg_renderer = QSvgRenderer(svg_path)
+        pixmap = QPixmap(size)
+        pixmap.fill(QColor("transparent"))  # Start with a transparent pixmap
+
+        painter = QPainter(pixmap)
+        svg_renderer.render(painter)
+        painter.setCompositionMode(QPainter.CompositionMode_SourceIn)
+        painter.fillRect(pixmap.rect(), color)
+        painter.end()
+
+        return QIcon(pixmap)
 
 class ConfigManager:
     def __init__(self, filename='Grubber.ini'):
@@ -99,11 +115,6 @@ class Router:
         self.current_page = page_widget
         self.layout.addWidget(page_widget)  # Add the new page
 
-    def go_back(self):
-        """Go back to the previous page if available."""
-        if self.previous_page is not None:
-            self.load(self.previous_page)
-
     def load_initial(self, page_widget):
         """Load the initial page without setting a previous page."""
         self.clean()
@@ -111,8 +122,18 @@ class Router:
         self.previous_page = None
         self.layout.addWidget(page_widget)
 
-    def reset_navigation(self):
-        """Reset navigation history."""
-        self.current_page = None
-        self.previous_page = None
+    def go_back(self):
+        """Go back to the previous page if available."""
+        if self.previous_page is not None:
+            self.load(self.previous_page)
+
+    def go_to_page(self, page_class, *args, **kwargs):
+        """
+        Load a new page dynamically.
+        :param page_class: The page class to load.
+        :param args: Positional arguments to pass to the page class constructor.
+        :param kwargs: Keyword arguments to pass to the page class constructor.
+        """
+        page_widget = page_class(self, *args, **kwargs)
+        self.load(page_widget)
 

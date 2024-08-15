@@ -17,19 +17,21 @@ def main():
     customFonts = LoadCustomFonts()
     customFonts.load_fonts()
 
-    viewport = QWidget()
-    viewport.setObjectName("viewport")
-    viewport.setFont(QFont(config.font, 16, QFont.Normal))
-    viewport.setWindowIcon(QIcon('./assets/public/grubber-color.png'))
-    viewport.setWindowTitle('Grubber')
+    main_window = QWidget()
+    main_window.setObjectName("viewport")
+    main_window.setFont(QFont(config.font, 16, QFont.Normal))
+    main_window.setWindowIcon(QIcon('./assets/public/grubber-color.png'))
+    main_window.setWindowTitle('Grubber')
 
-    body = QVBoxLayout(viewport)
-    body.setContentsMargins(0, 0, 0, 0)
-    body.setSpacing(0)
-    router = Router(body)
-    router.load_initial(Base(viewport))
+    main_layout = QVBoxLayout(main_window)
+    main_layout.setContentsMargins(0, 0, 0, 0)
+    main_layout.setSpacing(0)
+    
+    router = Router(main_layout)
+    initial_page = Base(router, main_window)
+    router.load_initial(initial_page)
 
-    viewport.show()
+    main_window.show()
 
     sys.exit(app.exec())
 

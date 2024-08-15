@@ -1,48 +1,35 @@
 from PySide6.QtWidgets import *
 from PySide6.QtCore import *
 from PySide6.QtGui import *
-from App.Classes.Components import FooterWidget, VideoInput
-from App.Classes.Utility import ConfigManager
+from App.Classes.Components import FooterWidget, VideoInput, LayoutComponents
+from App.Classes.Utility import CustomRenderer, Router
+from App.Pages.Settings import Settings
 
 class Base(QWidget):
     '''Displays the starting view of the application'''
-    def __init__(self, parent):
+    def __init__(self, router, parent):
         super().__init__(parent)
-        self.setObjectName("HomePage")
-        LEFT_W = 120
-        RIGHT_W = 120
+        self.setObjectName("base")
+        self.router = router
         
-        config = ConfigManager()
+        layout = LayoutComponents()
         
-        container = QHBoxLayout()
-        container.setAlignment(Qt.AlignTop | Qt.AlignCenter)
-        container.setContentsMargins(0, 0, 0, 0)
-        container.setSpacing(0)
-
-        left_widget = QWidget()
-        left_widget.setFixedWidth(LEFT_W)
-        left_widget.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Expanding)
-        left_layout = QVBoxLayout(left_widget)
-        left_layout.setAlignment(Qt.AlignmentFlag.AlignHCenter | Qt.AlignmentFlag.AlignTop)
-        left_layout.setContentsMargins(0, 0, 0, 0)
-        left_layout.setSpacing(0)
-        
-        
-        center_widget = QWidget()
-        center_widget.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        center_layout = QVBoxLayout(center_widget)
-        center_layout.setAlignment(Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignHCenter)
-        center_layout.setContentsMargins(0, 0, 0, 0)
-        center_layout.setSpacing(0)
+        container = layout.WidgetContainer(self, direction=Qt.Horizontal)
+        left_widget = layout.SideWidget(self, width=120)
+        center_widget = layout.CenterWidget(self)
+        right_widget = layout.SideWidget(self, width=120)
+        spacer = QSpacerItem(0, 0, QSizePolicy.Expanding, QSizePolicy.Expanding)
         
         title = QLabel("Grubber", self)
         title.setObjectName("title")
         title.setAlignment(Qt.AlignmentFlag.AlignHCenter)
         title.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        center_widget.layout.addWidget(title)
         
         hero = QVBoxLayout()
         hero.setSpacing(16)
         hero.setContentsMargins(0, 32, 0, 32)
+        center_widget.layout.addLayout(hero)
         
         HEADLINE = 'Take youtube with you!'
         headline = QLabel(HEADLINE, self)
@@ -61,25 +48,25 @@ class Base(QWidget):
         hero.addWidget(paragraph)
         
         actions = VideoInput(self)
+        center_widget.layout.addWidget(actions)
         
-        spacer = QSpacerItem(0, 0, QSizePolicy.Expanding, QSizePolicy.Expanding)
+        center_widget.layout.addItem(spacer)
         
         footer = FooterWidget(self)
+        center_widget.layout.addWidget(footer)
         
-        center_layout.addWidget(title)
-        center_layout.addLayout(hero)
-        center_layout.addWidget(actions)
-        center_layout.addItem(spacer)
-        center_layout.addWidget(footer)
-
-        right_widget = QWidget()
-        right_widget.setFixedWidth(RIGHT_W)
-        right_widget.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Expanding)
-        right_layout = QVBoxLayout(right_widget)
-        right_layout.setContentsMargins(0, 0, 0, 0)
-        right_layout.setSpacing(0)
-        right_layout.setAlignment(Qt.AlignTop | Qt.AlignCenter)
-
+        settings_btn = QPushButton(self)
+        settings_btn_icon = CustomRenderer.ColorSVGIcon('./assets/icons/gear.svg', '#9F9F9F', QSize(24, 24))
+        settings_btn.setIcon(settings_btn_icon)
+        settings_btn.setIconSize(QSize(24, 24))
+        settings_btn.setFlat(True)
+        settings_btn.setStyleSheet('padding: 8;')
+        settings_btn.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        settings_btn.clicked.connect(lambda: self.router.go_to_page(Settings))
+        
+        left_widget.layout.addItem(spacer)
+        left_widget.layout.addWidget(settings_btn, alignment=Qt.AlignmentFlag.AlignHCenter)
+        
         container.addWidget(left_widget)
         container.addWidget(center_widget)
         container.addWidget(right_widget)
