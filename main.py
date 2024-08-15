@@ -2,7 +2,7 @@ import sys
 from PySide6.QtWidgets import *
 from PySide6.QtCore import *
 from PySide6.QtGui import *
-from App.Pages.HomePage import HomePage
+from App.Pages.Base import Base
 from App.Classes.Utility import LoadCustomFonts, ConfigManager
 from App.Classes.Router import Router
 
@@ -27,7 +27,7 @@ def main():
     body.setContentsMargins(0, 0, 0, 0)
     body.setSpacing(0)
     router = Router(body)
-    router.load_initial(HomePage(viewport))
+    router.load_initial(Base(viewport))
 
     viewport.show()
 
