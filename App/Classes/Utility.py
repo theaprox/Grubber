@@ -22,7 +22,7 @@ class CustomRenderer:
         """Creates a colored icon from an SVG file."""
         svg_renderer = QSvgRenderer(svg_path)
         pixmap = QPixmap(size)
-        pixmap.fill(QColor("transparent"))  # Start with a transparent pixmap
+        pixmap.fill(QColor("transparent"))
 
         painter = QPainter(pixmap)
         svg_renderer.render(painter)
@@ -111,9 +111,9 @@ class Router:
         if self.current_page is not None:
             self.previous_page = self.current_page
 
-        self.clean()  # Clear existing page
+        self.clean()
         self.current_page = page_widget
-        self.layout.addWidget(page_widget)  # Add the new page
+        self.layout.addWidget(page_widget)
 
     def load_initial(self, page_widget):
         """Load the initial page without setting a previous page."""

@@ -17,12 +17,10 @@ class LayoutComponents:
         pass
     
     def WidgetContainer(self, parent=None, direction=Qt.Horizontal):
-        """Creates a container that can hold the side and center widgets.
-        
+        """Creates a container to hold other widgets.
         Args:
             parent (QWidget): The parent widget for this container.
             direction (Qt.AlignmentFlag): Direction of the layout (Qt.Horizontal or Qt.Vertical).
-            
         Returns:
             QLayout: The container layout (either QHBoxLayout or QVBoxLayout).
         """
@@ -48,7 +46,7 @@ class LayoutComponents:
         side_layout.setSpacing(0)
 
         side_widget.setLayout(side_layout)
-        side_widget.layout = side_layout  # Store the layout reference
+        side_widget.layout = side_layout
         return side_widget
 
     def CenterWidget(self, parent=None):
@@ -62,7 +60,7 @@ class LayoutComponents:
         center_layout.setSpacing(0)
 
         center_widget.setLayout(center_layout)
-        center_widget.layout = center_layout  # Store the layout reference
+        center_widget.layout = center_layout
         return center_widget
 
 class FooterWidget(QWidget):
@@ -75,23 +73,19 @@ class FooterWidget(QWidget):
         footer_layout.setContentsMargins(0, 32, 0, 32)
         footer_layout.setAlignment(Qt.AlignmentFlag.AlignBottom | Qt.AlignmentFlag.AlignHCenter)
 
-        # Footer message
         FOOTER_TEXT = 'This is an open-source project. Code base can be found on GitHub:'
         footer_msg = QLabel(FOOTER_TEXT, self)
         footer_msg.setStyleSheet("font-size: 12px; color: #6f6f6f; padding: 0;")
 
-        # Hyperlink to GitHub
         GITHUB_URL = 'https://github.com/theaprox/Grubber'
         source_link = HyperlinkLabel(self)
         source_link.setStyleSheet("font-size: 12px; padding: 0; text-decoration: none;")
         linkTemplate = '<a style="text-decoration:none" href="{0}">{1}</a>'
         source_link.setText(linkTemplate.format(GITHUB_URL, 'grubber'))
 
-        # Add the widgets to the footer layout
         footer_layout.addWidget(footer_msg)
         footer_layout.addWidget(source_link)
 
-        # Set the layout for the FooterWidget
         self.setLayout(footer_layout)
 
 class VideoInput(QWidget):
@@ -148,7 +142,7 @@ class CustomWidgets:
         settings_list.setStyleSheet('font-size: 12px;')
         
         settings_list.setLayout(settings_list_layout)
-        settings_list.layout = settings_list_layout  # Store the layout reference
+        settings_list.layout = settings_list_layout
         return settings_list
 
     def SettingsListItem(self, parent=None):
@@ -163,5 +157,5 @@ class CustomWidgets:
         settings_list_item_layout.setSpacing(24)
         
         settings_list_item.setLayout(settings_list_item_layout)
-        settings_list_item.layout = settings_list_item_layout  # Store the layout reference
+        settings_list_item.layout = settings_list_item_layout
         return settings_list_item
