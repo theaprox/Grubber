@@ -14,15 +14,20 @@
 The project is built in python and utilizes PySide6 for GUI and yt-dlp for functionality.
 
 #### Featuees:
+**Basic:**
 - [x] ~~Responsive and modern GUI basics~~
 - [x] ~~Routing/pagination functionality~~
-- [ ] Basic download function
-- [ ] Selectable download location /w saved download directory
-- [ ] Settings for preffered video and audio quality
-- [ ] Customizable downlaod file (trim, cut)
-- [ ] Selectable video file quality for download
+- [ ] Validate and normalized user input url or video code
+- [ ] Download video to pup-up specified location
+- [ ] Save default download location
+- [ ] Download all videos from playlist
+**Advanced:**
+- [ ] Select to download video or audio only
+- [ ] Select download video and audio from a list of all available options (quality, format)
+- [ ] Customizable video segment download (trim to in-out time)
 - [ ] Option: download audio only
-- [ ] Option: download video only
+**Extra Features:**
+- [ ] Display list of selectible videos in playlist with filters (upload date, views, word search in description or title)
 
 ### Preview
 
