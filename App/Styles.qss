@@ -1,9 +1,10 @@
 #viewport {
     min-width: 800px;
     max-width: 800px;
+    min-height: 680px;
 }
 
-#HomePage {
+#base {
     background: qradialgradient(
         cx: 0.7, cy: 0.3, radius: 1,
         fx: 0.7, fy: 0.3,
