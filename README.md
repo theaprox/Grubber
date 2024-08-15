@@ -10,7 +10,6 @@
 **Grubber** is an open-srource project designed to download highest available quality youtube videos and/or its segments (specific user-defined parts of the video) to local storage.
 
 Project's GUI is made with: <a href='https://pypi.org/project/PySide6/' target='_blank'>PySide6</a>, and functionality built using <a href='https://github.com/yt-dlp/yt-dlp' target='_blank'>yt-dlp</a>.
----
 
 ## Featuees:
 **🦴 Basic:**
@@ -29,15 +28,11 @@ Project's GUI is made with: <a href='https://pypi.org/project/PySide6/' target='
 
 **🚀 Extra Features:**
 - [ ] Display list of selectible videos in playlist with filters (upload date, views, word search in description or title)
----
 
 ## Setup
-
 {...TBD...}
----
 
 # Preview
-
 <p align="left">
     <img 
         width=400
