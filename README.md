@@ -6,6 +6,13 @@
     />
 </p>
 
+---
+
+[![PyPi](https://img.shields.io/badge/-PyPi-blue.svg?logo=pypi&labelColor=555555&style=for-the-badge)](https://pypi.org/project/yt-dlp "PyPi YT-DLP")
+[![License: GPL-3.0](https://img.shields.io/badge/-Unlicense-blue.svg?style=for-the-badge)](LICENSE "License")
+[![Commits](https://img.shields.io/github/commit-activity/m/yt-dlp/yt-dlp?label=commits&style=for-the-badge)](https://github.com/theaprox/Grubber/commits "Commit History")
+
+
 ## About Project
 **Grubber** is an open-srource project designed to download highest available quality youtube videos and/or its segments (specific user-defined parts of the video) to local storage.
 
