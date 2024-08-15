@@ -1,5 +1,6 @@
 <p align="center">
     <img
+        height=128
         alt="Grubber app title image"
         src="https://i.ibb.co/nf8qXRz/Grubber.png"
     />
@@ -27,7 +28,7 @@ The project is built in python and utilizes PySide6 for GUI and yt-dlp for funct
 
 <p align="left">
     <img 
-        width=360
+        width=400
         alt="Preview of Grubber app start window"
         src="https://i.ibb.co/KF58N2V/homepage.png"
     />
