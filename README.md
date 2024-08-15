@@ -31,7 +31,7 @@ The project's GUI is made with <a href='https://pypi.org/project/PySide6/' targe
 **Extra Features:**
 - [ ] Display list of selectible videos in playlist with filters (upload date, views, word search in description or title)
 
-### Preview
+## Preview
 
 <p align="left">
     <img 
@@ -40,8 +40,6 @@ The project's GUI is made with <a href='https://pypi.org/project/PySide6/' targe
         src="https://i.ibb.co/KF58N2V/homepage.png"
     />
 </p>
-
----
 
 ## Setup Guide
 
