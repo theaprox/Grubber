@@ -26,7 +26,8 @@ The project is built in python and utilizes PySide6 for GUI and yt-dlp for funct
 ### Preview
 
 <p align="left">
-    <img
+    <img 
+        width=360
         alt="Preview of Grubber app start window"
         src="https://i.ibb.co/KF58N2V/homepage.png"
     />
