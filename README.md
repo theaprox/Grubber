@@ -9,11 +9,9 @@
 <!-- MANPAGE: BEGIN EXCLUDED SECTION -->
 <div align="center">
 
-[![PyPi YT-DLP](https://img.shields.io/badge/yt%20dlp-blue?style=for-the-badge&logo=pypi&logoColor=blue&label=PyPI&labelColor=black)
-](https://pypi.org/project/yt-dlp "PyPi YT-DLP")
-[![GitHub License](https://img.shields.io/github/license/theaprox/Grubber?style=for-the-badge&labelColor=black&color=orange)
-](LICENSE "License")
-[[![Commits](https://img.shields.io/github/commit-activity/m/yt-dlp/yt-dlp?label=commits&style=for-the-badge)](https://img.shields.io/github/commit-activity/m/theaprox/Grubber?style=for-the-badge&logo=comma&logoColor=green&label=commits&labelColor=black&color=green)](https://github.com/theaprox/Grubber/commits "Commit History")
+[![PyPi YT-DLP](https://img.shields.io/badge/yt%20dlp-blue?style=for-the-badge&logo=pypi&logoColor=blue&label=PyPI&labelColor=black)](https://pypi.org/project/yt-dlp "PyPi YT-DLP")
+[![GitHub License](https://img.shields.io/github/license/theaprox/Grubber?style=for-the-badge&labelColor=black&color=orange)](LICENSE "License")
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/theaprox/Grubber?style=for-the-badge&logo=comma&logoColor=green&label=commits&labelColor=black&color=green)](https://github.com/theaprox/Grubber/commits "Commit History")
 
 </div>
 <!-- MANPAGE: END EXCLUDED SECTION -->
