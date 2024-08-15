@@ -1,10 +1,10 @@
 from PySide6.QtWidgets import *
 from PySide6.QtCore import *
 from PySide6.QtGui import *
-from App.Classes.Components import FooterWidget
+from App.Classes.Components import FooterWidget, VideoInput
 from App.Classes.Utility import ConfigManager
 
-class HomePage(QWidget):
+class Base(QWidget):
     '''Displays the starting view of the application'''
     def __init__(self, parent):
         super().__init__(parent)
@@ -60,39 +60,7 @@ class HomePage(QWidget):
         hero.addWidget(headline)
         hero.addWidget(paragraph)
         
-        actions = QVBoxLayout()
-        actions.setSpacing(16)
-        actions.setContentsMargins(0, 32, 0, 32)
-        input = QLineEdit(self)
-        input.setObjectName("video_url")
-        input.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
-        input.setAlignment(Qt.AlignmentFlag.AlignLeft)
-        input.setPlaceholderText("Video URL...")
-        input.setFocusPolicy(Qt.FocusPolicy.ClickFocus)
-        actions.addWidget(input)
-
-        buttons = QVBoxLayout()
-        buttons.setSpacing(16)
-        buttons.setContentsMargins(0, 0, 0, 0)
-        buttons.setAlignment(Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignHCenter)
-        
-        TRIM = 'Download && Trim'
-        trim_btn = QPushButton(TRIM, self)
-        trim_btn.setObjectName("trim_btn")
-        trim_btn.setFont(QFont(config.font, 16, QFont.Medium))
-        trim_btn.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
-        trim_btn.setCursor(Qt.PointingHandCursor)
-        
-        DOWNLOAD = 'Full Video Download'
-        down_btn = QPushButton(DOWNLOAD, self)
-        down_btn.setObjectName("down_btn")
-        down_btn.setFont(QFont(config.font, 16, QFont.Medium))
-        down_btn.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
-        down_btn.setCursor(Qt.PointingHandCursor)
-        
-        buttons.addWidget(trim_btn)
-        buttons.addWidget(down_btn, alignment=Qt.AlignCenter)
-        actions.addLayout(buttons)
+        actions = VideoInput(self)
         
         spacer = QSpacerItem(0, 0, QSizePolicy.Expanding, QSizePolicy.Expanding)
         
@@ -100,7 +68,7 @@ class HomePage(QWidget):
         
         center_layout.addWidget(title)
         center_layout.addLayout(hero)
-        center_layout.addLayout(actions)
+        center_layout.addWidget(actions)
         center_layout.addItem(spacer)
         center_layout.addWidget(footer)
 
