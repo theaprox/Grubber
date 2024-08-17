@@ -1,4 +1,3 @@
-</br>
 <p align="center">
     <img
         height=64
