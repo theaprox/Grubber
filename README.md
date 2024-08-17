@@ -1,3 +1,4 @@
+</br>
 <p align="center">
     <img
         height=64
@@ -5,8 +6,6 @@
         src="https://i.ibb.co/nf8qXRz/Grubber.png"
     />
 </p>
-
-</br>
 </br>
 
 <!-- MANPAGE: BEGIN EXCLUDED SECTION -->
