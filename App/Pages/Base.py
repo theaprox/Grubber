@@ -1,8 +1,7 @@
 from PySide6.QtWidgets import *
 from PySide6.QtCore import *
 from PySide6.QtGui import *
-from App.Classes.Components import FooterWidget, VideoInput, LayoutComponents
-from App.Classes.Utility import CustomRenderer, Router
+from App.Classes.Components import FooterWidget, VideoInput, LayoutComponents, CIcon, CButton, CLabel, CHLayout, CVLayout, CSpacer
 from App.Pages.Settings import Settings
 
 class Base(QWidget):
@@ -14,35 +13,29 @@ class Base(QWidget):
         
         layout = LayoutComponents()
         
-        container = layout.WidgetContainer(self, direction=Qt.Horizontal)
+        container = CHLayout(self)
         left_widget = layout.SideWidget(self, width=120)
         center_widget = layout.CenterWidget(self)
         right_widget = layout.SideWidget(self, width=120)
-        spacer = QSpacerItem(0, 0, QSizePolicy.Expanding, QSizePolicy.Expanding)
         
-        title = QLabel("Grubber", self)
+        spacer = CSpacer()
+        
+        title = CLabel("Grubber", self)
         title.setObjectName("title")
-        title.setAlignment(Qt.AlignmentFlag.AlignHCenter)
-        title.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
         center_widget.layout.addWidget(title)
         
-        hero = QVBoxLayout()
-        hero.setSpacing(16)
+        hero = CVLayout()
         hero.setContentsMargins(0, 32, 0, 32)
+        hero.setSpacing(16)
         center_widget.layout.addLayout(hero)
         
         HEADLINE = 'Take youtube with you!'
-        headline = QLabel(HEADLINE, self)
-        headline.setAlignment(Qt.AlignmentFlag.AlignHCenter)
-        headline.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
-        headline.setStyleSheet('font-size: 32px;')
+        headline = CLabel(HEADLINE, self)
+        headline.setObjectName("headline")
         
         PARAGRAPH = 'Grubber makes it easy to download high-quality YouTube videos up to 4K.\nYou can also easily trim the video to download only the parts you want!'
-        paragraph = QLabel(PARAGRAPH, self)
-        paragraph.setWordWrap(True)
-        paragraph.setAlignment(Qt.AlignmentFlag.AlignHCenter)
-        paragraph.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
-        paragraph.setStyleSheet('font-size: 16px; color: #9F9F9F;')
+        paragraph = CLabel(PARAGRAPH, self)
+        paragraph.setObjectName("paragraph")
         
         hero.addWidget(headline)
         hero.addWidget(paragraph)
@@ -55,13 +48,9 @@ class Base(QWidget):
         footer = FooterWidget(self)
         center_widget.layout.addWidget(footer)
         
-        settings_btn = QPushButton(self)
-        settings_btn_icon = CustomRenderer.ColorSVGIcon('./assets/icons/gear.svg', '#9F9F9F', QSize(24, 24))
+        settings_btn = CButton(self)
+        settings_btn_icon = CIcon.SVG('./assets/icons/gear.svg', '#9F9F9F', QSize(24, 24))
         settings_btn.setIcon(settings_btn_icon)
-        settings_btn.setIconSize(QSize(24, 24))
-        settings_btn.setFlat(True)
-        settings_btn.setStyleSheet('padding: 8;')
-        settings_btn.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         settings_btn.clicked.connect(lambda: self.router.go_to_page(Settings))
         
         left_widget.layout.addItem(spacer)
