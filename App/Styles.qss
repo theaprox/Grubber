@@ -1,16 +1,6 @@
 #viewport {
-    min-width: 800;
-    max-width: 800;
-    min-height: 680;
-}
-
-CLabel {
-    font-size: 12pt;
-}
-
-CButton { 
-    padding: 12px;
-    font-size: 12pt;
+    min-width: 840;
+    max-width: 840;
 }
 
 CInput {
@@ -19,6 +9,7 @@ CInput {
     background: transparent;
     border: none;
     border-bottom: 2px solid rgba(128,128,128,64);
+    margin: 0 4px;
 }
 
 CInput:hover {
@@ -29,24 +20,25 @@ CInput:focus {
     border-color: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0,stop: 0 #FFA400, stop: 1 #DB00FF);
 }
 
-#footer * {
-    padding: 0;
+CButton { 
+    padding: 12px;
+    font-size: 12pt;
+}
+
+CLabel {
+    font-size: 12pt;
+}
+
+#footer {
+    padding: 8px 0;
     font-size: 10pt;
     color: #6f6f6f;
+    background: rgba(128, 128, 128, 32);
 }
 
-#base {
-    background: qradialgradient(
-        cx: 0.7, cy: 0.3, radius: 1,
-        fx: 0.7, fy: 0.3,
-        stop: 0 rgba(0, 60, 255, 25),
-        stop: 1 rgba(0, 60, 255, 0)
-    );
-}
-
-#title {
+#branding {
     font: 64pt 'Passero One';
-    color: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0,stop: 0 #FFA400, stop: 1 #DB00FF); padding: 48px 0;
+    color: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0,stop: 0 #FFA400, stop: 1 #DB00FF);
 }
 
 #headline {
@@ -55,8 +47,7 @@ CInput:focus {
 }
 
 #paragraph {
-    font-size: 12pt;
-    color: #9F9F9F;
+    color: #9f9f9f;
 }
 
 #video_url:focus {
@@ -88,12 +79,4 @@ CInput:focus {
 
 #down_btn:hover {
     text-decoration: underline; 
-}
-
-#HyperlinkLabel {
-    text-decoration: none;  
-}
-
-#HyperlinkLabel:hover {
-    text-decoration: underline;  
 }
