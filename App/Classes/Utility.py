@@ -17,21 +17,6 @@ class LoadCustomFonts:
         for font in FONTS_LIST:
             QFontDatabase.addApplicationFont(f"{FONTS_DIR}/{font}")
 
-class CustomRenderer:
-    def ColorSVGIcon(svg_path, color, size):
-        """Creates a colored icon from an SVG file."""
-        svg_renderer = QSvgRenderer(svg_path)
-        pixmap = QPixmap(size)
-        pixmap.fill(QColor("transparent"))
-
-        painter = QPainter(pixmap)
-        svg_renderer.render(painter)
-        painter.setCompositionMode(QPainter.CompositionMode_SourceIn)
-        painter.fillRect(pixmap.rect(), color)
-        painter.end()
-
-        return QIcon(pixmap)
-
 class ConfigManager:
     def __init__(self, filename='Grubber.ini'):
         self.filename = filename
