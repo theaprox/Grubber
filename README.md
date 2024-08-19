@@ -51,6 +51,6 @@ Project's GUI is made with: <a href='https://pypi.org/project/PySide6/' target='
     <img 
         width=400
         alt="Preview of Grubber app start window"
-        src="https://i.ibb.co/KF58N2V/homepage.png"
+        src="Assets/public/previews/page_front.png"
     />
 </p>

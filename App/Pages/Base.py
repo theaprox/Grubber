@@ -20,7 +20,7 @@ class Base(QWidget):
         
         widget_center = CWidget(direction=Qt.Vertical)
         widget_center.setContentsMargins(0, 32, 0, 32)
-        widget_center.layout().setSpacing(64)
+        widget_center.layout().setSpacing(48)
         widget_center.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
         
         widget_right = CWidget(direction=Qt.Vertical, width=120)
@@ -29,12 +29,14 @@ class Base(QWidget):
         
         ### BRANDING SECTION (TITLE)
         title = CLabel("Grubber", self)
+        title.setMargin(16)
         title.setObjectName("branding")
         widget_center.layout().addWidget(title)
         
         
         ### HERO SECTION
         hero = CWidget(direction=Qt.Vertical)
+        hero.setContentsMargins(0, 0, 0, 0)
         hero.layout().setSpacing(8)
         HEADLINE = 'Take youtube with you!'
         headline = CLabel(HEADLINE, self)
