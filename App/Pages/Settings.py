@@ -61,8 +61,7 @@ class Settings(QWidget):
         back_btn.setIcon(back_btn_icon)
         back_btn.clicked.connect(lambda: self.router.go_back())
         
-        widget_left.layout().addWidget(back_btn, alignment=Qt.AlignmentFlag.AlignHCenter)
-        widget_left.layout().addItem(spacer)
+        widget_left.layout().addWidget(back_btn)
         
         container.addWidget(widget_left)
         container.addWidget(widget_center)

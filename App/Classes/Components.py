@@ -1,6 +1,6 @@
 from PySide6.QtWidgets import QLabel, QWidget, QSpacerItem, QHBoxLayout, QSizePolicy, QVBoxLayout, QPushButton, QLineEdit
 from PySide6.QtCore import Qt, QSize
-from PySide6.QtGui import QFont, QIcon, QPixmap, QPainter, QColor
+from PySide6.QtGui import QFont, QIcon, QPixmap, QPainter, QColor, QMovie
 from PySide6.QtSvg import QSvgRenderer
 from App.Classes.Utility import ConfigManager
 
@@ -65,10 +65,10 @@ class CWidget(QWidget):
 
 class CLabel(QLabel):
     '''Custom global QLabel variant.'''
-    def __init__(self, text: str = "", parent=None):
+    def __init__(self, text: str = "", parent=None, size: int = 12):
         super().__init__(text, parent)
         self.setObjectName('CLabel')
-        self.setFont(QFont(config.font, 16, QFont.Normal))
+        self.setFont(QFont(config.font, size, QFont.Normal))
         self.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
         self.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.setText(text)
@@ -81,8 +81,43 @@ class CButton(QPushButton):
         self.setCursor(Qt.PointingHandCursor)
         self.setFont(QFont(config.font, 16, QFont.Medium))
         self.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
-        self.setIconSize(QSize(24, 24))
+        self.setIconSize(QSize(16, 16))
         self.setFlat(True)
+        
+        # set loading animation vars
+        self.loading_movie = QMovie('Assets/Animated/small_wave.gif')
+        self.loading_movie.setScaledSize(QSize(24, 24))
+        
+    def save_state(self):
+        self.original_text = self.text()
+        self.original_icon = self.icon()
+        
+    def restore_state(self):
+        if self.original_text != "":
+            self.setText(self.original_text)
+        if self.original_icon is not None:
+            self.setIcon(self.original_icon)
+        self.setEnabled(True)
+        
+    def clear_state(self):
+        self.setText("")
+        self.setIcon(QIcon())
+        
+    def set_loading(self):
+        self.save_state()
+        self.clear_state()
+        self.setEnabled(False)
+        self.loading_movie.start()
+        self.setIcon(QIcon(self.loading_movie.currentPixmap()))
+        self.loading_movie.frameChanged.connect(self.update_loading_icon)
+
+    def unset_loading(self):
+        self.loading_movie.stop()
+        self.loading_movie.frameChanged.disconnect(self.update_loading_icon)
+        self.restore_state()
+        
+    def update_loading_icon(self):
+        self.setIcon(QIcon(self.loading_movie.currentPixmap()))
 
 class CIcon:
     '''Custom QIcon variant for inserting colored SVG icons.'''

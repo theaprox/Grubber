@@ -3,10 +3,43 @@ from PySide6.QtCore import *
 from PySide6.QtGui import *
 from App.Classes.Components import *
 from App.Pages.Settings import Settings
+from App.Pages.Download import Download
+from functools import partial
 
 class Base(QWidget):
     '''Displays the starting view of the application'''
-    def __init__(self, router, parent):
+    
+    '''
+    You will create several classes/functions like "download_video", "validate_url", "extract_video_code", and others if needed...
+    
+    0) when user clicks "trim" or "down" buttons execute a download_video function.
+    This function doesnt actually download a video but instead performas an extensive check to validate provided information.
+    If all validation checks pass, it will then redirtect user to the actual Download page (Download.py) where the user will opt to download video/audio in variaus formats and qualities.
+    
+    1) when the function is called - disable the button that called the function for the duration of the check,
+    and replace it's text with a rotating loading throbber while validation (next steps) is taking place.
+    THEN
+    2) validate that the user input from "input.CInput()" is a valid YouTube video, or youtube short url.
+    3) if the video input validation fails:
+        * if the input url is of a playlist - set "feedback_msg" variable to "Playlists are not yet supported."
+        and execute a page reload using the "router" function (e.g.: "lambda: self.router.go_to_page(Base(feedback=feedback_msg))")
+        * if validation fails set "feedback_msg" variable to "Invalid URL."
+        and execute a page reload using the "router" function (e.g.: "lambda: self.router.go_to_page(Base(feedback=feedback_msg))")
+        
+    4) if validation passes:
+        * create an object "video_contents" with the following keys and values:
+            - "content type": "video" or "short"
+            - "url": user input url
+            - "code": video code extracted from the user input url (using yt-dlp, or pytube, or any other method/library)
+    5) using the "router" function open the imported "Download" page (from App.Pages.Download) (e.g.: "lambda: self.router.go_to_page(Download(contents=video_contents))") 
+    '''
+    
+    
+    def download_ckicled(self, button):
+        button.set_loading()
+        QTimer.singleShot(1000, button.unset_loading)
+    
+    def __init__(self, router, parent, feedback: str = ''):
         super().__init__(parent)
         self.router = router
         
@@ -52,17 +85,27 @@ class Base(QWidget):
         ### CTA SECTION (ACTION TO DOWNLOAD)
         cta = CWidget(direction=Qt.Vertical)
         cta.layout().setSpacing(12)
-        INPUT = 'Enter video URL...'
+        INPUT = 'Video URL...'
         input = CInput(self)
         input.setPlaceholderText(INPUT)
         input.setObjectName("video_url")
+        
         TRIM = 'Download && Trim'
         trim = CButton(TRIM, self)
         trim.setObjectName("trim_btn")
         trim.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        trim.clicked.connect(partial(self.download_ckicled, trim))
+        
         DOWNLOAD = 'Full Video Download'
         down = CButton(DOWNLOAD, self)
         down.setObjectName("down_btn")
+        
+        if feedback != '':
+            input_error_message = CLabel(feedback, self, size=10)
+            input_error_message.setAlignment(Qt.AlignmentFlag.AlignLeft)
+            input_error_message.setStyleSheet('color: red')
+            cta.layout().addWidget(input_error_message)
+            
         cta.layout().addWidget(input)
         cta.layout().addWidget(trim)
         cta.layout().addWidget(down, alignment=Qt.AlignmentFlag.AlignHCenter)
